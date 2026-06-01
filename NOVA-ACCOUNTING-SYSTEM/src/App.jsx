@@ -15,6 +15,7 @@ import ReportsModule from "./admin/modules/ReportsModule";
 import UsersModule from "./admin/modules/UsersModule";
 import ReceiptsModule from "./admin/modules/ReceiptsModule";
 import ProductsModule from "./admin/modules/ProductsModule";
+import DashboardModule from "./admin/modules/DashboardModule";
 
 function App() {
   return (
@@ -29,61 +30,25 @@ function App() {
       <Route path="/users" element={<Users />} />
 
       {/* ADMIN LAYOUT */}
-      <Route path="/admin" element={<AdminLayout />}>
+<Route path="/admin" element={<AdminLayout />}>
 
-        {/* DEFAULT ADMIN SCREEN */}
-        <Route
-          index
-          element={
-            <div className="text-center mt-20">
-              <h1 className="text-4xl font-bold text-slate-800">
-                ERP Administration
-              </h1>
+  {/* DEFAULT ADMIN DASHBOARD */}
+  <Route
+    index
+    element={<DashboardModule />}
+  />
 
-              <p className="text-slate-500 mt-3">
-                Select a module from the sidebar
-              </p>
-            </div>
-          }
-        />
+  {/* MODULES */}
+  <Route path="modules/inventory" element={<InventoryModule />} />
+  <Route path="modules/sales" element={<SalesModule />} />
+  <Route path="modules/payments" element={<PaymentsModule />} />
+  <Route path="modules/reports" element={<ReportsModule />} />
+  <Route path="modules/users" element={<UsersModule />} />
+  <Route path="modules/receipts" element={<ReceiptsModule />} />
+  <Route path="modules/products" element={<ProductsModule />} />
+  <Route path="modules/dashboard" element={<DashboardModule />} />
 
-        {/* MODULES */}
-        <Route
-          path="modules/inventory"
-          element={<InventoryModule />}
-        />
-
-        <Route
-          path="modules/sales"
-          element={<SalesModule />}
-        />
-
-        <Route
-          path="modules/payments"
-          element={<PaymentsModule />}
-        />
-
-        <Route
-          path="modules/reports"
-          element={<ReportsModule />}
-        />
-
-        <Route
-          path="modules/users"
-          element={<UsersModule />}
-        />
-
-        <Route
-          path="modules/receipts"
-          element={<ReceiptsModule />}
-        />
-
-        <Route
-          path="modules/products"
-          element={<ProductsModule />}
-        />
-
-      </Route>
+</Route>
 
     </Routes>
   );
